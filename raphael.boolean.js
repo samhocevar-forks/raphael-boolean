@@ -684,16 +684,20 @@
 				curPart.added = true;
 				if (endPointId != firstStartPoint) { //path isn't closed yet
 					curPart = parts[startIndex[endPointId]]; //new part to add is the one that has current ending point as starting point
-				} else { //add subpath to new path and find part that hasn't been added yet to start a new sub-path
-					newPath.push(subPath);
-					subPath = [];
+					if (curPart) {
+						continue;
+					}
+				}
 
-					for (var p = 1; p < parts.length; p++) {
-						if (!parts[p].added) {
-							curPart = parts[p];
-							firstStartPoint = parts[p][0].startPoint;
-							break;
-						}
+				//add subpath to new path and find part that hasn't been added yet to start a new sub-path
+				newPath.push(subPath);
+				subPath = [];
+
+				for (var p = 1; p < parts.length; p++) {
+					if (!parts[p].added) {
+						curPart = parts[p];
+						firstStartPoint = parts[p][0].startPoint;
+						break;
 					}
 				}
 			}
