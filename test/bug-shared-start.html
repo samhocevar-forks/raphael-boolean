@@ -17,14 +17,18 @@
 				var paper = Raphael(type, 350, 150);
 
 				var path1 = paper.path("M 100,0 L60,120 L140,40 Z");
-				path1.attr({fill: "#a00", stroke: "none"});
+				path1.attr({fill: "#faa", stroke: "#a00"});
 
 				var path2 = paper.path("M 100,0 L140,120 L60,40 Z");
-				path2.attr({fill: "#0a0", stroke: "none"});
+				path2.attr({fill: "#afa", stroke: "#0a0"});
+
+				paper.getPathInters(path1, path2).forEach(function(p) {
+					paper.circle(p[0], p[1], 5).attr({stroke: '#000'});
+				});
 
 				var booleanStr = paper[type](path1, path2);
 				var booleanPath = paper.path(booleanStr);
-				booleanPath.attr({fill: "#00a", stroke: "none"});
+				booleanPath.attr({fill: "#aaf", stroke: "#00a"});
 				booleanPath.transform("t150,0");
 			});
 		</script>
