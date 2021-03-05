@@ -802,7 +802,7 @@
 		var path2Segs = JSON.parse(JSON.stringify(prepare(el2)));
 
 		var ret = [];
-		var inters = getIntersections(pathSegsToStr(path1Segs), pathSegsToStr(path2Segs), true);
+		var inters = getIntersections(pathSegsToStr(path1Segs), pathSegsToStr(path2Segs));
 		for (var i = 0; i < inters.length; ++i) {
 			ret.push([inters[i].x, inters[i].y]);
 		}
