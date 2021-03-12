@@ -794,6 +794,18 @@
 	};
 
 	/**
+	 * return direction of path
+	 *
+	 * @param object p (RaphaelJS element)
+	 *
+	 * @returns direction (-1 or 1)
+	 */
+	var getPathDir = function(p) {
+		var pathSegs = JSON.parse(JSON.stringify(prepare(p)));
+		return getPathDirection(pathSegs);
+	}
+
+	/**
 	 * return intersection of the two given paths
 	 *
 	 * @param object el1 (RaphaelJS element)
@@ -873,6 +885,7 @@
 	//add public methods to Raphael
 	Raphael.fn.toPath = toPath;
 	Raphael.fn.getPathInters = getPathInters;
+	Raphael.fn.getPathDir = getPathDir;
 
 	Raphael.fn.union = union;
 	Raphael.fn.difference = difference;
